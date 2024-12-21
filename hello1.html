@@ -1,12 +1,163 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rushabh Marketing - Digital Business Card</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Basic styling for the card */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            width: 320px;
+        }
+
+        .card-header {
+            text-align: center;
+        }
+
+        .logo {
+            width: 80px;
+            border-radius: 50%;
+        }
+
+        .card-body {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .card-footer {
+            margin-top: 20px;
+        }
+
+        /* Styling for the product section with swiping feature */
+        .product-section {
+            display: flex;
+            overflow-x: scroll;
+            padding: 10px;
+            gap: 20px;
+        }
+
+        .product-section::-webkit-scrollbar {
+            display: none;
+        }
+
+        .product-card {
+            flex-shrink: 0;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 120px;
+            padding: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 2px solid #ddd;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-image {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .product-name {
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+    </style>
+
+</head>
 
 <body>
-    <h1>
-        Hello Welcome to Git.Get Lost or i will shoot you with missiles
-    </h1>
-    <h1>
-        Hello Welcome to Git.Get Lost or i will shoot you with missiles
-    </h1>
+    <div class="card-container">
+        <div class="card">
+            <div class="card-header">
+                <img src="https://github.com/Chaitya18/Flutter-Training/blob/main/logo.png?raw=true" alt="Rushabh Marketing Logo" class="logo">
+                <h1>Rushabh Marketing</h1>
+                <h3>Owner: Mr.Tejas Shah</h3>
+            </div>
+            <div class="card-body">
+                <p><strong>Phone:</strong> <a href="tel:+919879400951">+91 9879400951</a></p>
+                <p><strong>Email:</strong> <a href="mailto:tej1819@gmail.com">tej1819@gmail.com</a></p>
+                <p><strong>Address:</strong></p>
+                <p>1223,Unchi Gali,Shamlani Pole,Raipur,Ahmedabad,Gujarat-380007</p>
+            </div>
+            <div class="card-footer">
+                <h3>Products</h3>
+                <div class="product-section">
+                    <div class="product-card">
+                        <img src="https://github.com/Chaitya18/Flutter-Training/blob/main/acetic%20acid.jpg?raw=true" alt="Acetic Acid" class="product-image">
+                        <p class="product-name">Acetic Acid</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://github.com/Chaitya18/Flutter-Training/blob/main/formic%20acid.jpg?raw=true" alt="Formic Acid" class="product-image">
+                        <p class="product-name">Formic Acid</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://github.com/Chaitya18/Flutter-Training/blob/main/urea.jpg?raw=true" alt="Urea" class="product-image">
+                        <p class="product-name">Urea</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Optional: You can add swipe gesture support for touch devices
+        const productSection = document.querySelector('.product-section');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        productSection.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - productSection.offsetLeft;
+            scrollLeft = productSection.scrollLeft;
+        });
+
+        productSection.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+
+        productSection.addEventListener('mouseup', () => {
+            isDown = false;
+        });
+
+        productSection.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - productSection.offsetLeft;
+            const walk = (x - startX) * 2; //scroll-fast
+            productSection.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+
 </body>
 
 </html>
